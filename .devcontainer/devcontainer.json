@@ -1,0 +1,14 @@
+// コンテナ上のVSCodeの設定
+{
+    // VSCode上で表示される名前
+    "name": "ruby app",
+    // docker-composeファイルのパス
+    "dockerComposeFile": "../compose.yml",
+    // docker-composeのサービス
+    "service": "web",
+    // VSCodeのルートディレクトリ
+    "workspaceFolder": "/ruby_app",
+    // コンテナからホストに転送するポートリスト
+    "forwardPorts": [3000],
+    // ここまでの参考: https://qiita.com/75ks/items/b2961e8562c353f42d21
+}
