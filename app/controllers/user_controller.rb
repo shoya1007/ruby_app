@@ -29,6 +29,15 @@ class UserController < ApplicationController
         end
     end
 
+    def edit
+        if current_user
+            current_user.update(user_params)
+            render json: {message: "Updated successfully.", user: current_user}, status: :ok
+        else
+            render json: {message: "Not logged in."}, status: :unauthorized
+        end
+    end
+
     private
 
     def user_params
