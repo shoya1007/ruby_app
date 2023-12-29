@@ -9,6 +9,6 @@
     // VSCodeのルートディレクトリ
     "workspaceFolder": "/ruby_app",
     // コンテナからホストに転送するポートリスト
-    "forwardPorts": [3000],
+    "forwardPorts": [3000]
     // ここまでの参考: https://qiita.com/75ks/items/b2961e8562c353f42d21
 }
