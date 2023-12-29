@@ -1,0 +1,29 @@
+openapi: 3.0.3
+info:
+  title: ruby_app
+  version: 1.0.0
+servers:
+  - url: http://localhost:3000
+tags:
+  - name: HealthChecks
+    description: Endpoint to do healthchecks
+paths:
+  /healthz:
+    get:
+      tags:
+        - HealthChecks
+      summary: get success response
+      operationId: healthCheck
+      responses:
+        '200':
+          description: return result ok
+          content:
+            application/json:
+              schema:
+                required:
+                  - result
+                type: object
+                properties:
+                 result:
+                  type: string
+                  example: ok

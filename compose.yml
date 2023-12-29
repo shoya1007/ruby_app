@@ -17,5 +17,24 @@ services:
       - "3000:3000"
     volumes:
       - .:/ruby_app
+
+  swagger-editor:
+    image: swaggerapi/swagger-editor
+    ports:
+      - "8000:8080"
+    volumes:
+      - ./docs/openapi.yaml:/tmp/openapi.yaml
+    environment:
+      SWAGGER_FILE: /tmp/openapi.yaml
+
+  swagger-ui:
+    image: swaggerapi/swagger-ui
+    ports: 
+      - "8001:8080"
+    volumes:
+      - ./docs/openapi.yaml:/usr/share/nginx/html/openapi.yaml
+    environment:
+      API_URL: openapi.yaml
+
 volumes:
   db-data:
