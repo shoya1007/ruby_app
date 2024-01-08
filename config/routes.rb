@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   get '/users/me', to: 'user#show'
   put '/users/me', to: 'user#edit'
   get '/healthz', to: 'health_check#show'
+  post '/posts', to: 'post#create'
 end
