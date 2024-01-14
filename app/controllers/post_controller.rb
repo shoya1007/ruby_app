@@ -11,6 +11,11 @@ class PostController < ApplicationController
         end
     end
 
+    def index
+        posts = Post.all
+        render json: posts
+    end
+
     private
 
     def post_params
