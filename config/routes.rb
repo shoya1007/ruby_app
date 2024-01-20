@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   post '/posts', to: 'post#create'
   get '/posts', to: 'post#index'
   get '/posts/:id', to: 'post#show'
+  put '/posts/:id', to: 'post#edit'
   # 本当はresourcesを使った書き方の方がいいらしいが、今回の実装ではcontroller名がpostなのでエンドポイント名も/postになってしまうのでコメントアウト。
   # resources :post, only: [:index]
 end
