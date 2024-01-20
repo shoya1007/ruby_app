@@ -17,8 +17,16 @@ class PostController < ApplicationController
     end
 
     def show
-        post = Post.find(params[:id])
+        post = post = get_post_by_id(params[:id])
         render json: post
+    rescue ActiveRecord::RecordNotFound
+        render json: { error: "Post not found" }, status: :not_found
+    end
+
+    def edit
+        post = get_post_by_id(params[:id])
+        post.update(post_params)
+        render json: { message: "Updated successfully", post: get_post_by_id(params[:id]) }, status: :ok
     rescue ActiveRecord::RecordNotFound
         render json: { error: "Post not found" }, status: :not_found
     end
@@ -35,5 +43,9 @@ class PostController < ApplicationController
         # @current_user ||= ... は、@current_userが未定義またはnilの場合にのみ右側の式を評価する。
         # session[:user_id]が存在する場合に、User.findによってデータベースからユーザー情報を取得する。
         @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    end
+
+    def get_post_by_id(id)
+        Post.find(id)
     end
 end
