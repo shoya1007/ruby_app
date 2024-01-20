@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get '/healthz', to: 'health_check#show'
   post '/posts', to: 'post#create'
   get '/posts', to: 'post#index'
+  get '/posts/:id', to: 'post#show'
   # 本当はresourcesを使った書き方の方がいいらしいが、今回の実装ではcontroller名がpostなのでエンドポイント名も/postになってしまうのでコメントアウト。
   # resources :post, only: [:index]
 end
