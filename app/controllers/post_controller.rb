@@ -31,6 +31,14 @@ class PostController < ApplicationController
         render json: { error: "Post not found" }, status: :not_found
     end
 
+    def delete
+        post = get_post_by_id(params[:id])
+        post.destroy
+        render json: { message: "Deleted successfully", post_id: params[:id]}, status: :ok
+    rescue ActiveRecord::RecordNotFound
+        render json: { error: "Post not found" }, status: :not_found
+    end
+
     private
 
     def post_params
